@@ -1,14 +1,32 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
+  <ion-navbar color="danger">
+    <ion-title>Videos near from you</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+{{videos}}
+<ion-thumbnail item-start>
+  <img src="https://www.youtube.com/watch?v=bsoiupLME-w">
+</ion-thumbnail>
+
+<ion-list>
+  <button ion-item *ngFor="let video of videos" (click)="openVideo(video)" detail-none>
+    <ion-thumbnail item-start>
+      <img src="https://www.youtube.com/watch?v=bsoiupLME-w">
+    </ion-thumbnail>
+    <h2>{{ video.title }}</h2>
+    <p>{{ video.description }}</p>
+  </button>
+</ion-list>
+
+<ion-content>
+  <ion-list>
+    <button ion-item *ngFor="let video of videos" (click)="openVideo(video)" detail-none>
+      <ion-thumbnail item-start>
+        <img src="https://www.youtube.com/watch?v=bsoiupLME-w">
+      </ion-thumbnail>
+      <h2>{{ video.title }}</h2>
+      <p>{{ video.description }}</p>
+    </button>
+  </ion-list>
 </ion-content>
