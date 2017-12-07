@@ -16,13 +16,13 @@ export class HomePage {
   constructor(public navCtrl: NavController, private ytProvider: YtProvider, private youtube: YoutubeVideoPlayer) {
     this.radius = 100;
     this.coords = {latitude: -21, longitude: 55};
-    this.getVideos();
-  }
-
-  getVideos() {
-    this.ytProvider.search(this.coords.latitude, this.coords.longitude, this.radius).then((res) => {
+    this.getVideos().then((res) => {
       this.videos = res.videos;
     })
+  }
+
+  async getVideos() {
+    return await this.ytProvider.search(this.coords.latitude, this.coords.longitude, this.radius)
   }
 
   openVideo(video) {
